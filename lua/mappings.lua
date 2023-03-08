@@ -42,6 +42,7 @@ map("n", "<C-i>", "<C-i>zz", s_opts)
 map("n", "<C-d>", "<C-d>zz", s_opts)
 map("n", "<C-u>", "<C-u>zz", s_opts)
 
+-- Search
 map("n", "<Leader>*", ":Ag -S <C-r><C-w>", opts)
 map("n", "<Leader>a", ":Ag -S<Space>", opts)
 
@@ -71,3 +72,9 @@ map("v", "<Leader>Y", '"*y')
 
 -- Send the paste item to clipboard
 map("v", "<Leader>y", '"+y')
+
+-- Move around buffer
+map("n", "<S-l>", ':bnext<Cr>')
+map("n", "<S-h>", ':bprevious<Cr>')
+
+
