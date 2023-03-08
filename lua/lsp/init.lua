@@ -15,7 +15,12 @@ local servers = {
 	"yamlls",
 }
 
-require("mason").setup({})
+require("mason").setup({
+    ui = {
+      border = "rounded"
+    }
+})
+
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
 	automatic_installation = true,
