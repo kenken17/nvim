@@ -7,13 +7,14 @@ lua require("autocmds")
 
 colorscheme simple
 
-" For Ag
-if executable("ag")
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" For Rg
+if executable("rg")
+  " Use rg over grep
+  " set grepprg=rg\ --nogroup\ --nocolor
+  set grepprg=rg\ --vimgrep\ --no-heading
 
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  if !exists(":Rg")
+    command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
   endif
 endif
 
