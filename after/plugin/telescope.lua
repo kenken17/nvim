@@ -31,6 +31,8 @@ require("telescope").setup({
 					type = "action",
 					opts = { nowait = true, silent = true },
 				},
+				["<F2>"] = actions.close,
+				["<Esc>"] = actions.close,
 			},
 		},
 	},
