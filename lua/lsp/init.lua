@@ -97,6 +97,22 @@ local lsp_keymaps = function(bufnr)
 	end, bufopts)
 end
 
+local hover_instance = function(client)
+	if client.server_capabilities.documentHighlightProvider then
+		vim.api.nvim_create_augroup("lsp_document_highlight", {})
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+			group = "lsp_document_highlight",
+			buffer = 0,
+			callback = vim.lsp.buf.document_highlight,
+		})
+		vim.api.nvim_create_autocmd("CursorMoved", {
+			group = "lsp_document_highlight",
+			buffer = 0,
+			callback = vim.lsp.buf.clear_references,
+		})
+	end
+end
+
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -107,6 +123,8 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	lsp_keymaps(bufnr)
+
+	hover_instance(client)
 end
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")

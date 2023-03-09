@@ -55,6 +55,10 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim_undos"
 -- for opening diff
 vim.opt.diffopt = "internal,filler,closeoff,vertical"
 
+-- Faster response
+vim.opt.timeoutlen = 500
+vim.opt.updatetime = 800
+
 -- clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
 -- cmdheight = 2,                           -- more space in the neovim command line for displaying messages
 -- completeopt = { "menuone", "noselect" }, -- mostly just for cmp
@@ -62,8 +66,6 @@ vim.opt.diffopt = "internal,filler,closeoff,vertical"
 -- pumheight = 10,                          -- pop up menu height
 -- showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
 -- showtabline = 2,                         -- always show tabs
--- timeoutlen = 300,                        -- time to wait for a mapped sequence to complete (in milliseconds)
--- updatetime = 300,                        -- faster completion (4000ms default)
 -- expandtab = true,                        -- convert tabs to spaces
 -- linebreak = true,                        -- companion to wrap, don't split words
 -- guifont = "monospace:h17",               -- the font used in graphical neovim applications
