@@ -7,6 +7,7 @@ local servers = {
 	"emmet_ls",
 	"eslint",
 	"html",
+	"jdtls",
 	"jsonls",
 	"lua_ls",
 	"tsserver",
@@ -143,6 +144,9 @@ for _, server in pairs(servers) do
 	server = vim.split(server, "@")[1]
 
 	local require_ok, conf_opts = pcall(require, "lsp.settings." .. server)
+
+	-- For jdtls to work we need java 17+ and JAV_HOME set correctly in .bashrc
+	-- i.e. export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
 
 	if require_ok then
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
