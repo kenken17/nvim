@@ -83,6 +83,7 @@ return packer.startup(function(use)
 	use("kamykn/spelunker.vim")
 	use("vim-test/vim-test")
 	use("benmills/vimux")
+	use("tpope/vim-sleuth")
 
 	-- Source control
 	use("tpope/vim-fugitive")
