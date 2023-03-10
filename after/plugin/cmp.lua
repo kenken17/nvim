@@ -3,6 +3,34 @@ local luasnip = require("luasnip")
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
+local kind_icons = {
+	Text = "",
+	Method = "m",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+}
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -41,8 +69,9 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	formatting = {
-		fields = { "abbr", "menu" },
+		fields = { "abbr", "kind", "menu" },
 		format = function(entry, vim_item)
+			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.menu = ({
 				luasnip = "[Snip]",
 				nvim_lsp = "[LSP]",
