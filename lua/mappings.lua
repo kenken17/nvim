@@ -36,6 +36,10 @@ map("n", "#", "#Nzz", s_opts)
 map("n", "n", "nzz", s_opts)
 map("n", "N", "Nzz", s_opts)
 
+-- For quick vsplit diff
+map("n", "<Leader>d", ":windo diffthis<Cr>", s_opts)
+map("n", "<Leader>D", ":diffoff<Cr>", s_opts)
+
 -- In/Out/Up/Down with center
 map("n", "<C-o>", "<C-o>zz", s_opts)
 map("n", "<C-i>", "<C-i>zz", s_opts)
@@ -74,7 +78,5 @@ map("v", "<Leader>Y", '"*y')
 map("v", "<Leader>y", '"+y')
 
 -- Move around buffer
-map("n", "<S-l>", ':bnext<Cr>')
-map("n", "<S-h>", ':bprevious<Cr>')
-
-
+map("n", "<S-l>", ":bnext<Cr>")
+map("n", "<S-h>", ":bprevious<Cr>")
