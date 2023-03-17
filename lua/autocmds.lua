@@ -2,9 +2,9 @@ local api = vim.api
 
 -- Maker sure to auto format when save
 api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    vim.lsp.buf.format()
-  end,
+	callback = function()
+		vim.lsp.buf.format()
+	end,
 })
 
 api.nvim_create_autocmd("BufWritePre", {
