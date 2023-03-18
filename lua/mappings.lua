@@ -18,10 +18,8 @@ map("n", "<F1>", ":help <C-r><C-w><Cr>", s_opts)
 map("n", "<F2>", ":q<Cr>", s_opts)
 
 -- Resize with arrows
-map("n", "<C-Up>", ":resize -2<Cr>", s_opts)
-map("n", "<C-Down>", ":resize +2<Cr>", s_opts)
-map("n", "<C-Left>", ":vertical resize -2<Cr>", s_opts)
-map("n", "<C-Right>", ":vertical resize +2<Cr>", s_opts)
+map("n", "<S-h>", ":vertical resize -2<Cr>", s_opts)
+map("n", "<S-l>", ":vertical resize +2<Cr>", s_opts)
 
 -- Y to copy a line, why not right?
 map("n", "Y", "yy", s_opts)
@@ -76,7 +74,3 @@ map("v", "<Leader>Y", '"*y')
 
 -- Send the paste item to clipboard
 map("v", "<Leader>y", '"+y')
-
--- Move around buffer
-map("n", "<S-l>", ":bnext<Cr>")
-map("n", "<S-h>", ":bprevious<Cr>")

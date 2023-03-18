@@ -18,10 +18,15 @@ if executable("rg")
   endif
 endif
 
-" folding workaround
-function FoldConfig()
-	set foldmethod=expr
-	set foldexpr=nvim_treesitter#foldexpr()
-endfunction
-
-autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()
+let g:clipboard = {
+      \   'name': 'WslClipboard',
+      \   'copy': {
+      \	'+': 'clip.exe',
+      \	'*': 'clip.exe',
+      \   },
+      \   'paste': {
+      \	'+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("`r", ""))',
+      \	'*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("`r", ""))',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
