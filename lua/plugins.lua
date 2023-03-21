@@ -1,7 +1,7 @@
--- Uncomment out when first use
+-- -- Uncomment out when first use
 -- local fn = vim.fn
 --
--- Automatically install packer
+-- -- Automatically install packer
 -- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 --
 -- if fn.empty(fn.glob(install_path)) > 0 then
@@ -104,4 +104,10 @@ return packer.startup(function(use)
 	-- Testing ground
 	use("nvim-treesitter/playground")
 	use({ "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" } })
+
+	-- -- Automatically set up your configuration after cloning packer.nvim
+	-- -- Put this at the end after all plugins
+	-- if PACKER_BOOTSTRAP then
+	-- 	require("packer").sync()
+	-- end
 end)
