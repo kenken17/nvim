@@ -1,1 +1,0 @@
-/home/ken/Privates/simple.vim/colors/simple.vim
