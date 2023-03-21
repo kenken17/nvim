@@ -17,16 +17,3 @@ if executable("rg")
     command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
   endif
 endif
-
-let g:clipboard = {
-      \   'name': 'WslClipboard',
-      \   'copy': {
-      \	'+': 'clip.exe',
-      \	'*': 'clip.exe',
-      \   },
-      \   'paste': {
-      \	'+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("`r", ""))',
-      \	'*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("`r", ""))',
-      \   },
-      \   'cache_enabled': 0,
-      \ }
