@@ -86,6 +86,7 @@ return packer.startup(function(use)
 	use("vim-test/vim-test")
 	use("benmills/vimux")
 	use("tpope/vim-sleuth")
+	use("terryma/vim-expand-region")
 
 	-- Source control
 	use("tpope/vim-fugitive")
