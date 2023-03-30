@@ -17,3 +17,8 @@ if executable("rg")
     command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
   endif
 endif
+
+if has('win32unix')
+  echo "You're running on Windows Subsystem for Linux."
+endif
+
