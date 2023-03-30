@@ -50,7 +50,7 @@ return packer.startup(function(use)
 	use("mg979/vim-visual-multi")
 
 	-- Color scheme
-	use("kenken17/simple.vim")
+	-- use("kenken17/simple.vim")
 
 	-- IDE
 	use("preservim/nerdtree")
