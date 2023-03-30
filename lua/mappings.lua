@@ -15,7 +15,7 @@ map("n", "<Space>", ".", s_opts)
 map("n", "<F1>", ":help <C-r><C-w><Cr>", s_opts)
 
 -- Quit
-map("n", "<F2>", ":lua CloseTab()<Cr>", s_opts)
+map("n", "<F2>", ":lua CloseOut()<Cr>", s_opts)
 
 -- Resize with arrows
 map("n", "<S-h>", ":vertical resize -2<Cr>", s_opts)
@@ -78,10 +78,18 @@ map("v", "<Leader>y", '"+y')
 -- For self define function
 -- ------------------------
 -- Close tab or quit
-function CloseTab()
-	if vim.api.nvim_get_mode()["mode"] == "n" and vim.bo.buflisted then
+function CloseOut()
+	local is_plugin_ui = vim.fn.winnr("$") == 1
+
+	if vim.bo.filetype == "help" or is_plugin_ui then
 		vim.cmd("q")
 	else
-		vim.cmd("tabclose")
+		if vim.api.nvim_get_mode()["mode"] == "n" then
+			if vim.bo.buflisted then
+				vim.cmd("q")
+			elseif vim.api.nvim_tabpage_is_valid(0) then
+				vim.cmd("tabclose")
+			end
+		end
 	end
 end
