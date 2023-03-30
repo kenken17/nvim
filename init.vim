@@ -18,7 +18,21 @@ if executable("rg")
   endif
 endif
 
-if has('win32unix')
-  echo "You're running on Windows Subsystem for Linux."
-endif
+if has('unix')
+  let is_wsl = system('uname -a') =~ 'microsoft'
 
+  if is_wsl
+    let g:clipboard = {
+      \   'name': 'WslClipboard',
+      \   'copy': {
+      \	'+': 'clip.exe',
+      \	'*': 'clip.exe',
+      \   },
+      \   'paste': {
+      \	'+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("`r", ""))',
+      \	'*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("`r", ""))',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
+  endif
+endif
