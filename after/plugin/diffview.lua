@@ -211,12 +211,6 @@ diffview.setup({
 			{ "n", "g!", actions.options, { desc = "Open the option panel" } },
 			{
 				"n",
-				"<C-A-d>",
-				actions.open_in_diffview,
-				{ desc = "Open the entry under the cursor in a diffview" },
-			},
-			{
-				"n",
 				"y",
 				actions.copy_hash,
 				{ desc = "Copy the commit hash of the entry under the cursor" },
@@ -254,12 +248,6 @@ diffview.setup({
 				actions.select_entry,
 				{ desc = "Open the diff for the selected entry." },
 			},
-			{
-				"n",
-				"<2-LeftMouse>",
-				actions.select_entry,
-				{ desc = "Open the diff for the selected entry." },
-			},
 			{ "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
 			{
 				"n",
@@ -267,7 +255,6 @@ diffview.setup({
 				actions.select_prev_entry,
 				{ desc = "Open the diff for the previous file" },
 			},
-			{ "n", "<C-w><C-f>", actions.goto_file_split, { desc = "Open the file in a new split" } },
 			{ "n", "<leader>e", actions.focus_files, { desc = "Bring focus to the file panel" } },
 			{ "n", "<leader>b", actions.toggle_files, { desc = "Toggle the file panel" } },
 			{ "n", "g<C-x>", actions.cycle_layout, { desc = "Cycle available layouts" } },
@@ -276,6 +263,7 @@ diffview.setup({
 		option_panel = {
 			{ "n", "<tab>", actions.select_entry, { desc = "Change the current option" } },
 			{ "n", "q", actions.close, { desc = "Close the panel" } },
+			{ "n", "R", actions.refresh_files, { desc = "Update stats and entries in the file list." } },
 			{ "n", "g?", actions.help("option_panel"), { desc = "Open the help panel" } },
 		},
 		help_panel = {
@@ -290,7 +278,7 @@ local s_opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<F9>", ":DiffviewOpen<Cr>", opts)
 vim.keymap.set("n", "<Leader><F10>", ":DiffviewOpen<Space>", opts)
-vim.keymap.set("n", "<F12>", ":DiffviewFileHistory<Cr>", s_opts)
+vim.keymap.set("n", "<F12>", ":DiffviewFileHistory --no-merges<Cr>", s_opts)
 
 -- set the removed lines as /
 vim.opt.fillchars:append({ diff = "╾" })
