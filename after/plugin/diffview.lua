@@ -1,6 +1,7 @@
 local actions = require("diffview.actions")
 
 require("diffview").setup({
+	show_help_hints = false, -- Show hints for how to open the help panel
 	use_icons = false,
 	signs = {
 		fold_closed = "▶ ",
@@ -265,8 +266,11 @@ require("diffview").setup({
 local opts = { noremap = true }
 local s_opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<F10>", ":DiffviewOpen<Cr>", opts)
+vim.keymap.set("n", "<F9>", ":DiffviewOpen<Cr>", opts)
 vim.keymap.set("n", "<Leader><F10>", ":DiffviewOpen<Space>", opts)
 vim.keymap.set("n", "<F12>", ":DiffviewFileHistory<Cr>", s_opts)
 vim.keymap.set("n", "<Leader><F12>", ":DiffviewFileHistory %<Cr>", s_opts)
 vim.keymap.set("n", "<Leader><F12>", ":DiffviewFileHistory %<Cr>", s_opts)
+
+-- set the removed lines as /
+vim.opt.fillchars:append({ diff = "╱" })
