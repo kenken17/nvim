@@ -82,8 +82,9 @@ function CloseOut()
 	local is_plugin_ui = vim.fn.winnr("$") == 1
 	local win_config = vim.api.nvim_win_get_config(0)
 	local is_floating = win_config.relative == "editor"
+	local is_special = vim.bo.filetype == "nerdtree" or vim.bo.filetype == "help" or vim.bo.filetype == "packer"
 
-	if vim.bo.filetype == "help" or is_plugin_ui or is_floating then
+	if is_special or is_plugin_ui or is_floating then
 		vim.cmd("q")
 	else
 		if vim.api.nvim_get_mode()["mode"] == "n" then
