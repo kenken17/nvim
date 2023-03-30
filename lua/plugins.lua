@@ -90,7 +90,7 @@ return packer.startup(function(use)
 
 	-- Source control
 	use("tpope/vim-fugitive")
-	use("cohama/agit.vim")
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("lambdalisue/gina.vim")
 
 	-- Tressitter
