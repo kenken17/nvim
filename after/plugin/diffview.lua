@@ -46,7 +46,6 @@ diffview.setup({
 			-- tabpage is a Diffview.
 			{ "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
 			{ "n", "<s-tab>", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
-			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
 			{ "n", "<leader>e", actions.focus_files, { desc = "Bring focus to the file panel" } },
 			{ "n", "<leader>b", actions.toggle_files, { desc = "Toggle the file panel." } },
 			{ "n", "g<C-x>", actions.cycle_layout, { desc = "Cycle through available layouts." } },
@@ -63,17 +62,15 @@ diffview.setup({
 				{ desc = "In the merge-tool: jump to the next conflict" },
 			},
 			{ "n", "22", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
-			{ "n", "33", actions.conflict_choose("theirs"), { desc = "Choose the THEIRS version of a conflict" } },
+			{
+				"n",
+				"33",
+				actions.conflict_choose("theirs"),
+				{ desc = "Choose the THEIRS version of a conflict" },
+			},
 			{ "n", "11", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
 			{ "n", "00", actions.conflict_choose("all"), { desc = "Choose all the versions of a conflict" } },
 			{ "n", "dx", actions.conflict_choose("none"), { desc = "Delete the conflict region" } },
-			{ "n", "cc", ":tabclose<Cr>:Git commit<Cr>", { desc = "Commit the staged changes" } },
-			{
-				"n",
-				"ca",
-				":tabclose<Cr>:Git commit --amend<Cr>",
-				{ desc = "Amend the last commit and edit the message." },
-			},
 		},
 		diff1 = {
 			-- Mappings in single window diff layouts
@@ -122,6 +119,10 @@ diffview.setup({
 			{ "n", "g?", actions.help({ "view", "diff4" }), { desc = "Open the help panel" } },
 		},
 		file_panel = {
+			["o"] = function()
+				actions.goto_file_edit()
+				vim.cmd("tabclose #")
+			end,
 			{ "n", "j", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },
 			{ "n", "<down>", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },
 			{
@@ -137,9 +138,13 @@ diffview.setup({
 				{ desc = "Bring the cursor to the previous file entry." },
 			},
 			{ "n", "<cr>", actions.select_entry, { desc = "Open the diff for the selected entry." } },
-			{ "n", "o", actions.select_entry, { desc = "Open the diff for the selected entry." } },
 			{ "n", "<2-LeftMouse>", actions.select_entry, { desc = "Open the diff for the selected entry." } },
-			{ "n", "-", actions.toggle_stage_entry, { desc = "Stage / unstage the selected entry." } },
+			{
+				"n",
+				"-",
+				actions.toggle_stage_entry,
+				{ desc = "Stage / unstage the selected entry." },
+			},
 			{ "n", "S", actions.stage_all, { desc = "Stage all entries." } },
 			{ "n", "U", actions.unstage_all, { desc = "Unstage all entries." } },
 			{
@@ -148,15 +153,30 @@ diffview.setup({
 				actions.restore_entry,
 				{ desc = "Restore entry to the state on the left side." },
 			},
-			{ "n", "L", actions.open_commit_log, { desc = "Open the commit log panel." } },
-			{ "n", "<c-b>", actions.scroll_view(-0.25), { desc = "Scroll the view up" } },
-			{ "n", "<c-f>", actions.scroll_view(0.25), { desc = "Scroll the view down" } },
-			{ "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
-			{ "n", "<s-tab>", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
-			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
-			{ "n", "<C-w><C-f>", actions.goto_file_split, { desc = "Open the file in a new split" } },
-			{ "n", "<C-w>gf", actions.goto_file_tab, { desc = "Open the file in a new tabpage" } },
-			{ "n", "i", actions.listing_style, { desc = "Toggle between 'list' and 'tree' views" } },
+			{
+				"n",
+				"L",
+				actions.open_commit_log,
+				{ desc = "Open the commit log panel." },
+			},
+			{
+				"n",
+				"<tab>",
+				actions.select_next_entry,
+				{ desc = "Open the diff for the next file" },
+			},
+			{
+				"n",
+				"<s-tab>",
+				actions.select_prev_entry,
+				{ desc = "Open the diff for the previous file" },
+			},
+			{
+				"n",
+				"i",
+				actions.listing_style,
+				{ desc = "Toggle between 'list' and 'tree' views" },
+			},
 			{
 				"n",
 				"f",
@@ -184,6 +204,10 @@ diffview.setup({
 			{ "n", "g?", actions.help("file_panel"), { desc = "Open the help panel" } },
 		},
 		file_history_panel = {
+			["o"] = function()
+				actions.goto_file_edit()
+				vim.cmd("tabclose #")
+			end,
 			{ "n", "g!", actions.options, { desc = "Open the option panel" } },
 			{
 				"n",
@@ -232,18 +256,10 @@ diffview.setup({
 			},
 			{
 				"n",
-				"o",
-				actions.select_entry,
-				{ desc = "Open the diff for the selected entry." },
-			},
-			{
-				"n",
 				"<2-LeftMouse>",
 				actions.select_entry,
 				{ desc = "Open the diff for the selected entry." },
 			},
-			{ "n", "<c-b>", actions.scroll_view(-0.25), { desc = "Scroll the view up" } },
-			{ "n", "<c-f>", actions.scroll_view(0.25), { desc = "Scroll the view down" } },
 			{ "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
 			{
 				"n",
@@ -251,14 +267,7 @@ diffview.setup({
 				actions.select_prev_entry,
 				{ desc = "Open the diff for the previous file" },
 			},
-			{
-				"n",
-				"gf",
-				actions.goto_file_edit,
-				{ desc = "Open the file in the previous tabpage" },
-			},
 			{ "n", "<C-w><C-f>", actions.goto_file_split, { desc = "Open the file in a new split" } },
-			{ "n", "<C-w>gf", actions.goto_file_tab, { desc = "Open the file in a new tabpage" } },
 			{ "n", "<leader>e", actions.focus_files, { desc = "Bring focus to the file panel" } },
 			{ "n", "<leader>b", actions.toggle_files, { desc = "Toggle the file panel" } },
 			{ "n", "g<C-x>", actions.cycle_layout, { desc = "Cycle available layouts" } },
