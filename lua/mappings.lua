@@ -80,8 +80,10 @@ map("v", "<Leader>y", '"+y')
 -- Close tab or quit
 function CloseOut()
 	local is_plugin_ui = vim.fn.winnr("$") == 1
+	local win_config = vim.api.nvim_win_get_config(0)
+	local is_floating = win_config.relative == "editor"
 
-	if vim.bo.filetype == "help" or is_plugin_ui then
+	if vim.bo.filetype == "help" or is_plugin_ui or is_floating then
 		vim.cmd("q")
 	else
 		if vim.api.nvim_get_mode()["mode"] == "n" then
