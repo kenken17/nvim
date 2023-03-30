@@ -1,6 +1,7 @@
 local actions = require("diffview.actions")
+local diffview = require("diffview")
 
-require("diffview").setup({
+diffview.setup({
 	show_help_hints = false, -- Show hints for how to open the help panel
 	use_icons = false,
 	signs = {
