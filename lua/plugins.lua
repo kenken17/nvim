@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use("mg979/vim-visual-multi")
 
 	-- Color scheme
+	-- Since using a symlink no need to install for now
 	-- use("kenken17/simple.vim")
 
 	-- IDE
