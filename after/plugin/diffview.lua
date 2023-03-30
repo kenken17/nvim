@@ -67,6 +67,12 @@ require("diffview").setup({
 			{ "n", "00", actions.conflict_choose("all"), { desc = "Choose all the versions of a conflict" } },
 			{ "n", "dx", actions.conflict_choose("none"), { desc = "Delete the conflict region" } },
 			{ "n", "cc", ":tabclose<Cr>:Git commit<Cr>", { desc = "Commit the staged changes" } },
+			{
+				"n",
+				"ca",
+				":tabclose<Cr>:Git commit --amend<Cr>",
+				{ desc = "Amend the last commit and edit the message." },
+			},
 		},
 		diff1 = {
 			-- Mappings in single window diff layouts
@@ -168,6 +174,12 @@ require("diffview").setup({
 			{ "n", "<F5>", actions.prev_conflict, { desc = "Go to the previous conflict" } },
 			{ "n", "<F6>", actions.next_conflict, { desc = "Go to the next conflict" } },
 			{ "n", "cc", ":tabclose<Cr>:Git commit<Cr>", { desc = "Commit the staged changes" } },
+			{
+				"n",
+				"ca",
+				":tabclose<Cr>:Git commit --amend<Cr>",
+				{ desc = "Amend the last commit and edit the message." },
+			},
 			{ "n", "g?", actions.help("file_panel"), { desc = "Open the help panel" } },
 		},
 		file_history_panel = {
