@@ -16,6 +16,7 @@ map("n", "<F1>", ":help <C-r><C-w><Cr>", s_opts)
 
 -- Quit
 map("n", "<F2>", ":lua CloseOut()<Cr>", s_opts)
+map("n", "<Leader><F2>", ":tabclose<Cr>", s_opts)
 
 -- Resize with arrows
 map("n", "<S-h>", ":vertical resize -2<Cr>", s_opts)
