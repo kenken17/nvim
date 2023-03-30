@@ -1,4 +1,3 @@
-local opts = { noremap = true }
 local s_opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<F7>", "[c", s_opts)
