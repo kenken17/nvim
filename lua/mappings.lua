@@ -85,10 +85,11 @@ function CloseOut()
 	local win_config = vim.api.nvim_win_get_config(0)
 	local is_floating = win_config.relative == "editor"
 	local is_special = vim.bo.filetype == "nerdtree"
-		or vim.bo.filetype == "help"
-		or vim.bo.filetype == "packer"
-		or vim.bo.filetype == "fugitiveblame"
-		or vim.bo.filetype == "git"
+			or vim.bo.filetype == "help"
+			or vim.bo.filetype == "packer"
+			or vim.bo.filetype == "fugitiveblame"
+			or vim.bo.filetype == "git"
+			or vim.bo.filetype == "qf"
 
 	if is_special or is_plugin_ui or is_floating then
 		vim.cmd("q")
