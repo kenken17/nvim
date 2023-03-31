@@ -82,6 +82,8 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
