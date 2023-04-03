@@ -1,5 +1,10 @@
+local status_ok, diffview = pcall(require, "diffview")
+
+if not status_ok then
+	return
+end
+
 local actions = require("diffview.actions")
-local diffview = require("diffview")
 
 diffview.setup({
 	show_help_hints = false, -- Show hints for how to open the help panel

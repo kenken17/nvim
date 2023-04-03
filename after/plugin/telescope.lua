@@ -1,3 +1,9 @@
+local status_ok, telescope = pcall(require, "telescope")
+
+if not status_ok then
+	return
+end
+
 local s_opts = { noremap = true, silent = true }
 
 local builtin = require("telescope.builtin")
@@ -19,7 +25,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, s_opts)
 vim.keymap.set("n", "<leader>fs", builtin.grep_string, s_opts)
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, s_opts)
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
