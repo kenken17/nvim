@@ -40,7 +40,7 @@ diffview.setup({
 		win_config = {
 			-- See ':h diffview-config-win_config'
 			position = "top",
-			height = 16,
+			height = 30,
 			win_opts = {},
 		},
 	},
