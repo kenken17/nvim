@@ -1,0 +1,1 @@
+set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
