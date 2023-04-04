@@ -108,8 +108,8 @@ return packer.startup(function(use)
 	})
 
 	-- Testing ground
-	use("nvim-treesitter/playground")
-	use({ "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" } })
+	-- use("nvim-treesitter/playground")
+	-- use({ "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" } })
 
 	-- -- Automatically set up your configuration after cloning packer.nvim
 	-- -- Put this at the end after all plugins
