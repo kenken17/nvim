@@ -46,8 +46,8 @@ map("n", "<C-d>", "<C-d>zz", s_opts)
 map("n", "<C-u>", "<C-u>zz", s_opts)
 
 -- Search
-map("n", "<Leader>*", ":Rg -s -F '<C-r><C-w>'", opts)
-map("n", "<Leader>a", ":Rg -s -F ''<Left>", opts)
+map("n", "<Leader>*", ":Rg -S -F '<C-r><C-w>'", opts)
+map("n", "<Leader>a", ":Rg -S -F ''<Left>", opts)
 
 -- Join wihtout moving the cursor
 map("n", "J", "mzJ`z", s_opts)
