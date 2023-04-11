@@ -39,6 +39,8 @@ telescope.setup({
 				},
 				["<F2>"] = actions.close,
 				["<Esc>"] = actions.close,
+				["<C-i>"] = actions.file_split,
+				["<C-s>"] = actions.file_vsplit,
 			},
 		},
 	},
