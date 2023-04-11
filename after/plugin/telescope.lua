@@ -12,13 +12,13 @@ local actions = require("telescope.actions")
 vim.keymap.set(
 	"n",
 	"<F3>",
-	"<cmd>lua require'telescope.builtin'.git_files(require'telescope.themes'.get_dropdown({ previewer = false }))<Cr>",
+	"<cmd>lua require'telescope.builtin'.find_files(require'telescope.themes'.get_dropdown({ previewer = false }))<Cr>",
 	s_opts
 )
 vim.keymap.set(
 	"n",
 	"<F4>",
-	"<cmd>lua require'telescope.builtin'.find_files(require'telescope.themes'.get_dropdown({ previewer = false }))<Cr>",
+	"<cmd>lua require'telescope.builtin'.git_files(require'telescope.themes'.get_dropdown({ previewer = false }))<Cr>",
 	s_opts
 )
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, s_opts)
