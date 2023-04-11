@@ -55,6 +55,7 @@ return packer.startup(function(use)
 
 	-- IDE
 	use("preservim/nerdtree")
+	use("PhilRunninger/nerdtree-visual-selection")
 	use("christoomey/vim-tmux-navigator")
 	use("mhinz/vim-startify")
 	use("vim-airline/vim-airline")
