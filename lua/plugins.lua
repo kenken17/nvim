@@ -94,6 +94,7 @@ return packer.startup(function(use)
 	use("benmills/vimux")
 	use("tpope/vim-sleuth")
 	use("terryma/vim-expand-region")
+	use('godlygeek/tabular')
 
 	-- Source control
 	use("tpope/vim-fugitive")
