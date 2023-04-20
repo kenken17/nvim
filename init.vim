@@ -36,3 +36,8 @@ if has('unix')
       \ }
   endif
 endif
+
+" "Aliases" for commonly used commands (fat finger):
+command! -bar -nargs=* -complete=file -range=% -bang W         <line1>,<line2>write<bang> <args>
+command! -bar -nargs=* -complete=file          -bang E         edit<bang> <args>
+command! -bar                                  -bang Q         quit<bang>
