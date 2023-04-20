@@ -66,25 +66,25 @@ diffview.setup({
 				actions.next_conflict,
 				{ desc = "In the merge-tool: jump to the next conflict" },
 			},
-			{ "n", "22",         actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
-			{ "n", "<Leader>ll", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
+			{ "n", "00", actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
+			{ "n", "11", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
+			{ "n", "22", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
 			{
 				"n",
 				"33",
 				actions.conflict_choose("theirs"),
 				{ desc = "Choose the THEIRS version of a conflict" },
 			},
+			{ "n", "<Leader>00", actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
+			{ "n", "<Leader>11", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
+			{ "n", "<Leader>22", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
 			{
 				"n",
-				"<Leader>rr",
+				"<Leader>33",
 				actions.conflict_choose("theirs"),
 				{ desc = "Choose the THEIRS version of a conflict" },
 			},
-			{ "n", "11",         actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
-			{ "n", "<Leader>bb", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
-			{ "n", "00",         actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
-			{ "n", "<Leader>aa", actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
-			{ "n", "dx",         actions.conflict_choose("none"), { desc = "Delete the conflict region" } },
+			{ "n", "dx", actions.conflict_choose("none"), { desc = "Delete the conflict region" } },
 		},
 		diff1 = {
 			-- Mappings in single window diff layouts
@@ -96,34 +96,7 @@ diffview.setup({
 		},
 		diff3 = {
 			-- Mappings in 3-way diff layouts
-			{
-				{ "n",                                                            "x" },
-				"22",
-				actions.diffget("ours"),
-				{ desc = "Obtain the diff hunk from the OURS version of the file" },
-			},
-			{
-				{ "n",                                                            "x" },
-				"<Leader>ll",
-				actions.diffget("ours"),
-				{ desc = "Obtain the diff hunk from the OURS version of the file" },
-			},
-			{
-				{ "n",                                                              "x" },
-				"33",
-				actions.diffget("theirs"),
-				{ desc = "Obtain the diff hunk from the THEIRS version of the file" },
-			},
-			{
-				{ "n",                                                              "x" },
-				"<Leader>rr",
-				actions.diffget("theirs"),
-				{ desc = "Obtain the diff hunk from the THEIRS version of the file" },
-			},
-			{ "n", "g?", actions.help({ "view", "diff3" }), { desc = "Open the help panel" } },
-		},
-		diff4 = {
-			-- Mappings in 4-way diff layouts
+			{ "n", "00",         actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
 			{
 				{ "n",                                                            "x" },
 				"11",
@@ -132,7 +105,33 @@ diffview.setup({
 			},
 			{
 				{ "n",                                                            "x" },
-				"<Leader>bb",
+				"22",
+				actions.diffget("ours"),
+				{ desc = "Obtain the diff hunk from the OURS version of the file" },
+			},
+			{
+				{ "n",                                                              "x" },
+				"33",
+				actions.diffget("theirs"),
+				{ desc = "Obtain the diff hunk from the THEIRS version of the file" },
+			},
+			{ "n", "<Leader>00", actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
+			{ "n", "<Leader>11", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
+			{ "n", "<Leader>22", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
+			{
+				"n",
+				"<Leader>33",
+				actions.conflict_choose("theirs"),
+				{ desc = "Choose the THEIRS version of a conflict" },
+			},
+			{ "n", "g?", actions.help({ "view", "diff3" }), { desc = "Open the help panel" } },
+		},
+		diff4 = {
+			-- Mappings in 4-way diff layouts
+			{ "n", "00",         actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
+			{
+				{ "n",                                                            "x" },
+				"11",
 				actions.diffget("base"),
 				{ desc = "Obtain the diff hunk from the BASE version of the file" },
 			},
@@ -143,22 +142,19 @@ diffview.setup({
 				{ desc = "Obtain the diff hunk from the OURS version of the file" },
 			},
 			{
-				{ "n",                                                            "x" },
-				"<Leader>ll",
-				actions.diffget("ours"),
-				{ desc = "Obtain the diff hunk from the OURS version of the file" },
-			},
-			{
 				{ "n",                                                              "x" },
 				"33",
 				actions.diffget("theirs"),
 				{ desc = "Obtain the diff hunk from the THEIRS version of the file" },
 			},
+			{ "n", "<Leader>00", actions.conflict_choose("all"),  { desc = "Choose all the versions of a conflict" } },
+			{ "n", "<Leader>11", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
+			{ "n", "<Leader>22", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
 			{
-				{ "n",                                                              "x" },
-				"<Leader>rr",
-				actions.diffget("theirs"),
-				{ desc = "Obtain the diff hunk from the THEIRS version of the file" },
+				"n",
+				"<Leader>33",
+				actions.conflict_choose("theirs"),
+				{ desc = "Choose the THEIRS version of a conflict" },
 			},
 			{ "n", "g?", actions.help({ "view", "diff4" }), { desc = "Open the help panel" } },
 		},
@@ -233,12 +229,13 @@ diffview.setup({
 				actions.refresh_files,
 				{ desc = "Update stats and entries in the file list." },
 			},
-			{ "n", "<Leader>e", actions.focus_files,            { desc = "Bring focus to the file panel" } },
-			{ "n", "<Leader>b", actions.toggle_files,           { desc = "Toggle the file panel" } },
-			{ "n", "g<C-x>",    actions.cycle_layout,           { desc = "Cycle available layouts" } },
-			{ "n", "<F5>",      actions.prev_conflict,          { desc = "Go to the previous conflict" } },
-			{ "n", "<F6>",      actions.next_conflict,          { desc = "Go to the next conflict" } },
-			{ "n", "cc",        ":tabclose<Cr>:Git commit<Cr>", { desc = "Commit the staged changes" } },
+			{ "n", "<Leader>e", actions.focus_files,                       { desc = "Bring focus to the file panel" } },
+			{ "n", "<Leader>b", actions.toggle_files,                      { desc = "Toggle the file panel" } },
+			{ "n", "g<C-x>",    actions.cycle_layout,                      { desc = "Cycle available layouts" } },
+			{ "n", "<F5>",      actions.prev_conflict,                     { desc = "Go to the previous conflict" } },
+			{ "n", "<F6>",      actions.next_conflict,                     { desc = "Go to the next conflict" } },
+			{ "n", "cc",        ":tabclose<Cr>:Git commit<Cr>",            { desc = "Commit the staged changes" } },
+			{ "n", "rr",        ":tabclose<Cr>:Git rebase --continue<Cr>", { desc = "Continue the rebase process" } },
 			{
 				"n",
 				"ca",
@@ -322,7 +319,7 @@ local s_opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<F9>", ":DiffviewOpen<Cr>", opts)
 vim.keymap.set("n", "<Leader><F10>", ":DiffviewOpen<Space>", opts)
-vim.keymap.set("n", "<F12>", ":DiffviewFileHistory --all --no-merges<Cr>", s_opts)
+vim.keymap.set("n", "<F12>", ":DiffviewFileHistory --all --no-merges .<Cr>", s_opts)
 vim.keymap.set("n", "<Leader><F12>", ":DiffviewFileHistory %<Cr>", s_opts)
 
 -- set the removed lines as /
