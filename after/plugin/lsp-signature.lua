@@ -5,5 +5,7 @@ if not status_ok then
 end
 
 lsp_signature.setup({
-	hint_enable = false,
+	hint_prefix = "🐸 ",
+	hint_enable = true,
+	floating_window = false,
 })
