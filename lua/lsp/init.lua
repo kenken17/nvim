@@ -30,9 +30,9 @@ require("mason-lspconfig").setup({
 local setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
+		{ name = "DiagnosticSignWarn",  text = "" },
+		{ name = "DiagnosticSignHint",  text = "" },
+		{ name = "DiagnosticSignInfo",  text = "" },
 	}
 
 	for _, sign in ipairs(signs) do
@@ -128,6 +128,9 @@ local on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 
 	hover_instance(client)
+
+	-- disable semantic token
+	client.server_capabilities.semanticTokensProvider = nil
 end
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
