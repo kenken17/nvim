@@ -95,7 +95,12 @@ return packer.startup(function(use)
 	use("tpope/vim-sleuth")
 	use("terryma/vim-expand-region")
 	use('godlygeek/tabular')
-	use('iamcco/markdown-preview.nvim')
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+		ft = { "markdown" },
+	})
 
 	-- Source control
 	use("tpope/vim-fugitive")
