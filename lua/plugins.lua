@@ -95,6 +95,7 @@ return packer.startup(function(use)
 	use("tpope/vim-sleuth")
 	use("terryma/vim-expand-region")
 	use('godlygeek/tabular')
+	use('iamcco/markdown-preview.nvim')
 
 	-- Source control
 	use("tpope/vim-fugitive")
