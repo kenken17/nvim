@@ -82,7 +82,10 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
-	use("jose-elias-alvarez/null-ls.nvim")
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
 
 	-- Editing
 	use("numToStr/Comment.nvim")
@@ -116,7 +119,7 @@ return packer.startup(function(use)
 	})
 
 	-- Testing ground
-	-- use("nvim-treesitter/playground")
+	use("nvim-treesitter/playground")
 	-- use({ "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" } })
 
 	-- -- Automatically set up your configuration after cloning packer.nvim
