@@ -30,9 +30,9 @@ require("mason-lspconfig").setup({
 local setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn",  text = "" },
-		{ name = "DiagnosticSignHint",  text = "" },
-		{ name = "DiagnosticSignInfo",  text = "" },
+		{ name = "DiagnosticSignWarn", text = "" },
+		{ name = "DiagnosticSignHint", text = "" },
+		{ name = "DiagnosticSignInfo", text = "" },
 	}
 
 	for _, sign in ipairs(signs) do
@@ -124,6 +124,13 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+	if client.name == "eslint" then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+	     buffer = bufnr,
+	     command = "EslintFixAll",
+	   })
+	end
 
 	lsp_keymaps(bufnr)
 
