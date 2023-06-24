@@ -319,7 +319,7 @@ local s_opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<F9>", ":DiffviewOpen<Cr>", opts)
 vim.keymap.set("n", "<Leader><F10>", ":DiffviewOpen<Space>", opts)
-vim.keymap.set("n", "<F12>", ":DiffviewFileHistory --all --no-merges<Cr>", s_opts)
+vim.keymap.set("n", "<F12>", ":DiffviewFileHistory<Cr>", s_opts)
 vim.keymap.set("n", "<Leader><F12>", ":DiffviewFileHistory %<Cr>", s_opts)
 vim.keymap.set("v", "<F12>", ":'<,'>DiffviewFileHistory<Cr>", s_opts)
 
