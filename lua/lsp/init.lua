@@ -1,4 +1,5 @@
 local servers = {
+	"ansiblels",
 	"bashls",
 	"cssls",
 	"cucumber_language_server",
@@ -10,6 +11,8 @@ local servers = {
 	"jdtls",
 	"jsonls",
 	"lua_ls",
+	"terraformls",
+	"tflint",
 	"tsserver",
 	"vimls",
 	"volar",
@@ -129,6 +132,13 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
 	     buffer = bufnr,
 	     command = "EslintFixAll",
+	   })
+	end
+
+	if client.name == "terraformls" then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+	     buffer = bufnr,
+	     command = "TerraformFmt",
 	   })
 	end
 

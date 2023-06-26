@@ -87,6 +87,9 @@ return packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 
+	-- Language Specific
+	use("hashivim/vim-terraform") -- Purely for the formating :TerraformFmt
+
 	-- Editing
 	use("numToStr/Comment.nvim")
 	use({ "kylechui/nvim-surround", tag = "*" })

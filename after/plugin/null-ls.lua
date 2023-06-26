@@ -14,7 +14,7 @@ null_ls.setup({
 	sources = {
 		formatting.stylua,
 		formatting.prettierd,
-		code_actions.gitsigns
+		code_actions.gitsigns,
 		-- formatting.eslint,
 	},
 })
