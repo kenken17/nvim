@@ -83,9 +83,6 @@ return packer.startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 
-	-- Language Specific
-	use("hashivim/vim-terraform") -- Purely for the formating :TerraformFmt
-
 	-- Editing
 	use("numToStr/Comment.nvim")
 	use({ "kylechui/nvim-surround", tag = "*" })
