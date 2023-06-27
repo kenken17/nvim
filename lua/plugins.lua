@@ -82,10 +82,6 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
-	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
 
 	-- Language Specific
 	use("hashivim/vim-terraform") -- Purely for the formating :TerraformFmt

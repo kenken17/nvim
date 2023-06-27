@@ -11,6 +11,8 @@ local servers = {
 	"jdtls",
 	"jsonls",
 	"lua_ls",
+	"marksman",
+	"sqlls",
 	"terraformls",
 	"tflint",
 	"tsserver",
@@ -33,9 +35,9 @@ require("mason-lspconfig").setup({
 local setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
+		{ name = "DiagnosticSignWarn",  text = "" },
+		{ name = "DiagnosticSignHint",  text = "" },
+		{ name = "DiagnosticSignInfo",  text = "" },
 	}
 
 	for _, sign in ipairs(signs) do
@@ -130,17 +132,18 @@ local on_attach = function(client, bufnr)
 
 	if client.name == "eslint" then
 		vim.api.nvim_create_autocmd("BufWritePre", {
-	     buffer = bufnr,
-	     command = "EslintFixAll",
-	   })
+			buffer = bufnr,
+			command = "EslintFixAll",
+		})
 	end
 
-	if client.name == "terraformls" then
-		vim.api.nvim_create_autocmd("BufWritePre", {
-	     buffer = bufnr,
-	     command = "TerraformFmt",
-	   })
-	end
+	-- format all buffer
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		buffer = bufnr,
+		callback = function()
+			vim.lsp.buf.format({ async = false })
+		end,
+	})
 
 	lsp_keymaps(bufnr)
 
