@@ -31,7 +31,8 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 
 -- No wrap
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.opt.linebreak = true -- companion to wrap, don't split words
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
@@ -59,14 +60,5 @@ vim.opt.diffopt = "internal,filler,closeoff,vertical"
 vim.opt.timeoutlen = 500
 vim.opt.updatetime = 800
 
--- clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
--- cmdheight = 2,                           -- more space in the neovim command line for displaying messages
--- completeopt = { "menuone", "noselect" }, -- mostly just for cmp
--- conceallevel = 0,                        -- so that `` is visible in markdown files
--- pumheight = 10,                          -- pop up menu height
--- showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
--- showtabline = 2,                         -- always show tabs
--- expandtab = true,                        -- convert tabs to spaces
--- linebreak = true,                        -- companion to wrap, don't split words
--- guifont = "monospace:h17",               -- the font used in graphical neovim applications
--- whichwrap = "bs<>[]hl",                  -- which "horizontal" keys are allowed to travel to prev/next line
+-- we don't need to see things like -- INSERT -- anymore
+vim.opt.showmode = false

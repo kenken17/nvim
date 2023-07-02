@@ -52,6 +52,10 @@ map("n", "<Leader>a", ":Rg --ignore-file ~/.rgignore -S -F ''<Left>", opts)
 -- Join wihtout moving the cursor
 map("n", "J", "mzJ`z", s_opts)
 
+-- Move up and down between virtual line
+map("n", "j", "gj", s_opts)
+map("n", "k", "gk", s_opts)
+
 -- Set comma above the line
 map("n", "<Leader>,", "mpk$A,<esc>`p", s_opts)
 
