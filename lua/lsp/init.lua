@@ -12,6 +12,7 @@ local servers = {
 	"jsonls",
 	"lua_ls",
 	"marksman",
+	"rome",
 	"sqlls",
 	"terraformls",
 	"tflint",
@@ -20,6 +21,11 @@ local servers = {
 	"volar",
 	"yamlls",
 }
+
+-- disable lsp watcher. Too slow. for ROME.
+require("vim.lsp._watchfiles")._watchfunc = function()
+	return function() end
+end
 
 require("mason").setup({
 	ui = {
