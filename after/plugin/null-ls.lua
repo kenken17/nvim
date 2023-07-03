@@ -12,9 +12,6 @@ local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup({
 	sources = {
-		-- formatting.hclfmt,
-		-- formatting.packer,
 		formatting.prettierd,
-		-- code_actions.gitsigns,
 	},
 })
