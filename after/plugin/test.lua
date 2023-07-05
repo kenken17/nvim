@@ -11,5 +11,4 @@ vim.g["test#strategy"] = {
 vim.g["test#javascript#runner"] = 'jest'
 
 -- For setting test runner
-vim.keymap.set("n", "<Leader>t", ":TestNearest<Cr>", s_opts)
-vim.keymap.set("n", "<Leader>T", ":TestFile --watch<Cr>", s_opts)
+vim.keymap.set("n", "<Leader>t", ":TestFile --watch<Cr>", s_opts)
