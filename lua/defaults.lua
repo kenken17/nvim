@@ -31,8 +31,9 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 
 -- No wrap
-vim.opt.wrap = true
-vim.opt.linebreak = true -- companion to wrap, don't split words
+vim.opt.wrap = false
+-- vim.opt.linebreak = true -- companion to wrap, don't split words
+
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
