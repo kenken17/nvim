@@ -12,13 +12,11 @@ local servers = {
 	"jsonls",
 	"lua_ls",
 	"marksman",
-	"rome",
 	"sqlls",
 	"terraformls",
 	"tflint",
 	"tsserver",
 	"vimls",
-	"volar",
 	"yamlls",
 }
 
@@ -93,22 +91,22 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
+	-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
+	-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set("n", "<Leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
+	-- vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+	-- vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+	-- vim.keymap.set("n", "<Leader>wl", function()
+	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	-- end, bufopts)
 	vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<Leader>f", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "<Leader>=", function()
-		vim.lsp.buf.format({ async = true })
-	end, bufopts)
+	-- vim.keymap.set("n", "<Leader>=", function()
+	-- 	vim.lsp.buf.format({ async = true })
+	-- end, bufopts)
 end
 
 local hover_instance = function(client)
