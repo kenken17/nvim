@@ -1,22 +1,13 @@
 local servers = {
 	"ansiblels",
 	"bashls",
-	"cssls",
-	"cucumber_language_server",
-	"docker_compose_language_service",
-	"dockerls",
-	"emmet_ls",
 	"eslint",
 	"html",
-	"jdtls",
 	"jsonls",
-	"lua_ls",
+	"lemminx",
 	"marksman",
-	"sqlls",
-	"terraformls",
-	"tflint",
 	"tsserver",
-	"vimls",
+	"volar",
 	"yamlls",
 }
 
@@ -104,9 +95,9 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<Leader>f", vim.lsp.buf.code_action, bufopts)
-	-- vim.keymap.set("n", "<Leader>=", function()
-	-- 	vim.lsp.buf.format({ async = true })
-	-- end, bufopts)
+	vim.keymap.set("n", "<Leader>=", function()
+		vim.lsp.buf.format({ async = true })
+	end, bufopts)
 end
 
 local hover_instance = function(client)
