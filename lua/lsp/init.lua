@@ -3,6 +3,7 @@ local servers = {
 	"bashls",
 	"eslint",
 	"html",
+	"jdtls",
 	"jsonls",
 	"lemminx",
 	"marksman",
