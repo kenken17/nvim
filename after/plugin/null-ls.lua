@@ -24,7 +24,5 @@ null_ls.setup({
 		diagnostics["markdownlint"],
 
 		diagnostics["yamllint"],
-
-		formatting["shfmt"],
 	},
 })
