@@ -20,9 +20,8 @@ null_ls.setup({
 
 		formatting["prettierd"],
 
-		formatting["markdownlint"],
-		diagnostics["markdownlint"],
-
 		diagnostics["yamllint"],
+
+		formatting["markdown_toc"],
 	},
 })
