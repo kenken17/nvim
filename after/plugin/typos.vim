@@ -16,6 +16,7 @@ iabbr cosnt const
 iabbr reutrn return
 iabbr retunr return
 iabbr reutnr return
+iabbr improt import
 
 nnoremap cie ciw
 
