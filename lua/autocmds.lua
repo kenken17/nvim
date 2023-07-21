@@ -26,3 +26,11 @@ api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
 -- Open log in quicklist window
 api.nvim_create_autocmd("QuickFixCmdPost", { command = [[*grep* cwindow]] })
+
+
+-- turn on spell check when text or markdown
+api.nvim_create_autocmd(
+	{ "BufWinEnter" },
+	{ pattern = "*.md,*.txt", command = 'if spelunker#toggle#is_enabled() == 0 | call spelunker#toggle_buffer() | endif' }
+)
+
