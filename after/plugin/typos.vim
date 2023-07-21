@@ -17,6 +17,10 @@ iabbr reutrn return
 iabbr retunr return
 iabbr reutnr return
 iabbr improt import
+iabbr klube kube
+iabbr kueb kube
+iabbr keub kube
+iabbr kebu kube
 
 nnoremap cie ciw
 
