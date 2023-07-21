@@ -80,6 +80,9 @@ map("v", "<Leader>Y", '"*y')
 -- Send the paste item to clipboard
 map("v", "<Leader>y", '"+y')
 
+-- For making toc for markdown, need markdown-toc
+map("n", "<Leader>mt", ':!markdown-toc -i %<CR>', opts)
+
 -- For self define function
 -- ------------------------
 -- Close tab or quit
