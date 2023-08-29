@@ -14,6 +14,7 @@ iabbr legnth length
 iabbr shoudl should
 iabbr cosnt const
 iabbr reutrn return
+iabbr ruetrn return
 iabbr retunr return
 iabbr reutnr return
 iabbr improt import

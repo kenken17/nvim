@@ -83,6 +83,9 @@ map("v", "<Leader>y", '"+y')
 -- For making toc for markdown, need markdown-toc
 map("n", "<Leader>mt", ':!markdown-toc -i %<CR>', opts)
 
+-- Open up NERDTree
+map("n", "<Leader><Space>", ':lua OpenNERDTree()<CR>', opts)
+
 -- For self define function
 -- ------------------------
 -- Close tab or quit
@@ -108,5 +111,16 @@ function CloseOut()
 				vim.cmd("tabclose")
 			end
 		end
+	end
+end
+
+-- Open NERDTree
+function OpenNERDTree()
+	local is_startify = vim.bo.filetype == "startify"
+
+	if is_startify then
+		vim.cmd("NERDTree")
+	else
+		vim.cmd("NERDTreeFind")
 	end
 end
