@@ -64,7 +64,7 @@ map("n", "<Leader>ff", ":%sno/<C-r><C-w>//gn<Cr>", s_opts)
 map("n", "<Leader>fr", ":%sno/<c-r><C-w>//gc<Left><Left><Left>", opts)
 
 -- Reset the current file
-map("n", "<Leader><Del>", ":! git checkout HEAD -- %<Cr>", s_opts)
+map("n", "<Leader><Del>", ":! git checkout HEAD -- '%'<Cr>", s_opts)
 
 -- Move along
 map("v", "J", ":m '>+1<Cr>gv=gv", s_opts)
