@@ -71,7 +71,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-nvim-lua")
 	use("andersevenrud/cmp-tmux")
-	use("ray-x/lsp_signature.nvim")
 
 	-- Snippets
 	use("L3MON4D3/LuaSnip")

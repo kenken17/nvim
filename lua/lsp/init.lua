@@ -38,14 +38,14 @@ local lsp_keymaps = function(bufnr)
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
-	-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-	-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
-	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<C-l>", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set('i', '<C-l>', vim.lsp.buf.signature_help, bufopts)
 	-- vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 	-- vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 	-- vim.keymap.set("n", "<Leader>wl", function()
@@ -54,9 +54,9 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<Leader>f", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "<Leader>=", function()
-		vim.lsp.buf.format({ async = true })
-	end, bufopts)
+	-- vim.keymap.set("n", "<Leader>=", function()
+	-- 	vim.lsp.buf.format({ async = true })
+	-- end, bufopts)
 end
 
 local hover_instance = function(client)
@@ -78,21 +78,6 @@ end
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- if client.name == "eslint" then
-	-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 		buffer = bufnr,
-	-- 		command = "EslintFixAll",
-	-- 	})
-	-- end
-	--
-	-- -- format all buffer
-	-- vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 	buffer = bufnr,
-	-- 	callback = function()
-	-- 		vim.lsp.buf.format({ async = false })
-	-- 	end,
-	-- })
 
 	lsp_keymaps(bufnr)
 
