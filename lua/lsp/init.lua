@@ -13,66 +13,23 @@ local servers = {
 	"yamlls",
 }
 
--- disable lsp watcher. Too slow. for ROME.
-require("vim.lsp._watchfiles")._watchfunc = function()
-	return function() end
+local mason_status, mason = pcall(require, "mason")
+
+if not mason_status then
+	return
 end
 
-require("mason").setup({
-	ui = {
-		border = "rounded",
-	},
-})
+local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 
-require("mason-lspconfig").setup({
-	ensure_installed = servers,
-	automatic_installation = true,
-})
-
-local setup = function()
-	local signs = {
-		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
-	}
-
-	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-	end
-
-	local config = {
-		virtual_text = false, -- disable virtual text
-		signs = {
-			severity_limit = "Hint",
-			active = signs, -- show signs
-		},
-		update_in_insert = true,
-		underline = true,
-		severity_sort = true,
-		float = {
-			focusable = true,
-			style = "minimal",
-			border = "rounded",
-			source = "always",
-			header = "",
-			prefix = "",
-		},
-	}
-
-	vim.diagnostic.config(config)
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
+if not mason_lspconfig_status then
+	return
 end
 
--- Run above setup
-setup()
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+
+if not lspconfig_status then
+	return
+end
 
 local lsp_keymaps = function(bufnr)
 	-- Mappings.
@@ -118,29 +75,24 @@ local hover_instance = function(client)
 	end
 end
 
---Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	if client.name == "eslint" then
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			buffer = bufnr,
-			command = "EslintFixAll",
-		})
-	end
-
-	-- format all buffer
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		buffer = bufnr,
-		callback = function()
-			vim.lsp.buf.format({ async = false })
-		end,
-	})
+	-- if client.name == "eslint" then
+	-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+	-- 		buffer = bufnr,
+	-- 		command = "EslintFixAll",
+	-- 	})
+	-- end
+	--
+	-- -- format all buffer
+	-- vim.api.nvim_create_autocmd("BufWritePre", {
+	-- 	buffer = bufnr,
+	-- 	callback = function()
+	-- 		vim.lsp.buf.format({ async = false })
+	-- 	end,
+	-- })
 
 	lsp_keymaps(bufnr)
 
@@ -150,10 +102,60 @@ local on_attach = function(client, bufnr)
 	client.server_capabilities.semanticTokensProvider = nil
 end
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-	return
+mason.setup({
+	ui = {
+		border = "rounded",
+	},
+})
+
+mason_lspconfig.setup({
+	ensure_installed = servers,
+	automatic_installation = true,
+})
+
+local signs = {
+	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
+}
+
+for _, sign in ipairs(signs) do
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
+})
+
+vim.diagnostic.config({
+	virtual_text = false, -- disable virtual text
+	signs = {
+		severity_limit = "Hint",
+		active = signs, -- show signs
+	},
+	update_in_insert = true,
+	underline = true,
+	severity_sort = true,
+	float = {
+		focusable = true,
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
+})
+
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local opts = {}
 
@@ -167,12 +169,12 @@ for _, server in pairs(servers) do
 
 	local require_ok, conf_opts = pcall(require, "lsp.settings." .. server)
 
-	-- For jdtls to work we need java 17+ and JAV_HOME set correctly in .bashrc
-	-- i.e. export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
-
 	if require_ok then
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
 	end
+
+	-- For jdtls to work we need java 17+ and JAV_HOME set correctly in .bashrc
+	-- i.e. export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
 
 	lspconfig[server].setup(opts)
 end
