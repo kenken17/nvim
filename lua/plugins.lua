@@ -99,7 +99,6 @@ return packer.startup(function(use)
 	use("vim-test/vim-test")
 	use("benmills/vimux")
 	use("tpope/vim-sleuth")
-	use("terryma/vim-expand-region")
 	use('godlygeek/tabular')
 	use({
 		"iamcco/markdown-preview.nvim",
