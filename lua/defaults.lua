@@ -63,3 +63,6 @@ vim.opt.updatetime = 800
 
 -- we don't need to see things like -- INSERT -- anymore
 vim.opt.showmode = false
+
+-- Add - as a word
+vim.opt.iskeyword:append("-")

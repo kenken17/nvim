@@ -86,6 +86,9 @@ map("n", "<Leader>mt", ':!markdown-toc -i %<CR>', opts)
 -- Open up NERDTree
 map("n", "<Leader><Space>", ':lua OpenNERDTree()<CR>', opts)
 
+-- toggle between - as word
+map("n", "<Leader>w", ':set iskeyword-=-<Cr>', opts)
+
 -- For self define function
 -- ------------------------
 -- Close tab or quit
