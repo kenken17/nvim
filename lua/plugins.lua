@@ -99,13 +99,20 @@ return packer.startup(function(use)
 	use("vim-test/vim-test")
 	use("benmills/vimux")
 	use("tpope/vim-sleuth")
-	use('godlygeek/tabular')
+	use("godlygeek/tabular")
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
-		setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
 		ft = { "markdown" },
 	})
+
+	-- DB
+	use("tpope/vim-dadbod")
+	use("kristijanhusak/vim-dadbod-ui")
+	use("kristijanhusak/vim-dadbod-completion")
 
 	-- Source control
 	use("tpope/vim-fugitive")

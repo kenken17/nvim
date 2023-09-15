@@ -103,6 +103,8 @@ function CloseOut()
 			or vim.bo.filetype == "git"
 			or vim.bo.filetype == "qf"
 			or vim.bo.filetype == "startify"
+			or vim.bo.filetype == "dbui"
+			or vim.bo.filetype == "dbout"
 
 	if is_special or is_plugin_ui or is_floating then
 		vim.cmd("q")

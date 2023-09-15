@@ -88,6 +88,7 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 				tmux = "[Tmux]",
+				["vim-dadbod-completion"] = "[Dadbod]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -106,10 +107,11 @@ cmp.setup({
 						bufs[vim.api.nvim_win_get_buf(win)] = true
 					end
 					return vim.tbl_keys(bufs)
-				end
-			}
+				end,
+			},
 		},
 		{ name = "path" },
+		-- { name = "vim-dadbod-completion" },
 	},
 	window = {
 		documentation = {
