@@ -126,6 +126,7 @@ return packer.startup(function(use)
 			ts_update()
 		end,
 	})
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	-- Testing ground
 	use("nvim-treesitter/playground")
