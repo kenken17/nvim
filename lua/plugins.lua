@@ -127,6 +127,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("Wansmer/treesj")
 
 	-- Testing ground
 	use("nvim-treesitter/playground")
