@@ -23,6 +23,7 @@ iabbr klube kube
 iabbr kueb kube
 iabbr keub kube
 iabbr kebu kube
+iabbr fiel file
 
 nnoremap cie ciw
 
