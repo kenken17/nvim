@@ -23,6 +23,9 @@ local con = snip("con", {
 })
 
 ls.add_snippets(nil, {
+	typescript = {
+		con,
+	},
 	javascript = {
 		con,
 	},
