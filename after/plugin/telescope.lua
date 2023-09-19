@@ -17,6 +17,12 @@ vim.keymap.set(
 )
 vim.keymap.set(
 	"n",
+	"<C-f>",
+	"<cmd>lua require'telescope.builtin'.find_files(require'telescope.themes'.get_dropdown({ previewer = false }))<Cr>",
+	s_opts
+)
+vim.keymap.set(
+	"n",
 	"<F4>",
 	"<cmd>lua require'telescope.builtin'.git_files(require'telescope.themes'.get_dropdown({ previewer = false }))<Cr>",
 	s_opts
