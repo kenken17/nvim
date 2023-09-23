@@ -26,8 +26,6 @@ null_ls.setup({
 		formatting["prettier"],
 
 		diagnostics["yamllint"],
-
-		formatting["markdown_toc"],
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

@@ -5,7 +5,6 @@ local servers = {
 	"html",
 	"jdtls",
 	"jsonls",
-	"lemminx",
 	"lua_ls",
 	"marksman",
 	"tsserver",
@@ -46,7 +45,7 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
 	vim.keymap.set("n", "<C-Space>", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('i', '<C-l>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
 	-- vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 	-- vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 	-- vim.keymap.set("n", "<Leader>wl", function()
@@ -140,7 +139,7 @@ vim.diagnostic.config({
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local opts = {}
