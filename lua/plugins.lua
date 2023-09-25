@@ -92,7 +92,7 @@ return packer.startup(function(use)
 	-- Editing
 	use("numToStr/Comment.nvim")
 	use({ "kylechui/nvim-surround", tag = "*" })
-	use("Raimondi/delimitMate")
+	use("windwp/nvim-autopairs")
 	use("tpope/vim-unimpaired")
 	use("kamykn/spelunker.vim")
 	use("vim-test/vim-test")
