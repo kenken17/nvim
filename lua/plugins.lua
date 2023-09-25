@@ -46,7 +46,6 @@ return packer.startup(function(use)
 	})
 	use("nvim-telescope/telescope-ui-select.nvim")
 	use("stevearc/dressing.nvim")
-	use("dyng/ctrlsf.vim")
 	use("mg979/vim-visual-multi")
 
 	-- Color scheme
