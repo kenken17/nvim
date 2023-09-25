@@ -81,13 +81,13 @@ map("v", "<Leader>Y", '"*y')
 map("v", "<Leader>y", '"+y')
 
 -- For making toc for markdown, need markdown-toc
-map("n", "<Leader>mt", ':!markdown-toc -i %<CR>', opts)
+map("n", "<Leader>mt", ":!markdown-toc -i %<CR>", opts)
 
 -- Open up NERDTree
-map("n", "<Leader><Space>", ':lua OpenNERDTree()<CR>', opts)
+map("n", "<Leader><Space>", ":lua OpenNERDTree()<CR>", opts)
 
 -- toggle between - as word
-map("n", "<Leader>w", ':set iskeyword-=-<Cr>', opts)
+map("n", "<Leader>w", ":set iskeyword-=-<Cr>", opts)
 
 -- For self define function
 -- ------------------------
@@ -97,14 +97,14 @@ function CloseOut()
 	local win_config = vim.api.nvim_win_get_config(0)
 	local is_floating = win_config.relative == "editor"
 	local is_special = vim.bo.filetype == "nerdtree"
-			or vim.bo.filetype == "help"
-			or vim.bo.filetype == "packer"
-			or vim.bo.filetype == "fugitiveblame"
-			or vim.bo.filetype == "git"
-			or vim.bo.filetype == "qf"
-			or vim.bo.filetype == "startify"
-			or vim.bo.filetype == "dbui"
-			or vim.bo.filetype == "dbout"
+		or vim.bo.filetype == "help"
+		or vim.bo.filetype == "packer"
+		or vim.bo.filetype == "fugitiveblame"
+		or vim.bo.filetype == "git"
+		or vim.bo.filetype == "qf"
+		or vim.bo.filetype == "startify"
+		or vim.bo.filetype == "dbui"
+		or vim.bo.filetype == "dbout"
 
 	if is_special or is_plugin_ui or is_floating then
 		vim.cmd("q")
@@ -113,7 +113,11 @@ function CloseOut()
 			if vim.bo.buflisted then
 				vim.cmd("q")
 			elseif vim.api.nvim_tabpage_is_valid(0) then
-				vim.cmd("tabclose")
+				local ok, result = pcall(vim.cmd, "tabclose")
+
+				if not ok then
+					vim.cmd("q")
+				end
 			end
 		end
 	end
