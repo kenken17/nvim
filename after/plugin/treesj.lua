@@ -1,6 +1,6 @@
-local treesj_status, treesj = pcall(require, "treesj")
+local status_status, treesj = pcall(require, "treesj")
 
-if not treesj_status then
+if not status_status then
 	return
 end
 
