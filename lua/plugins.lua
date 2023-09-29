@@ -62,6 +62,7 @@ return packer.startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		-- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
 	})
+	use("AckslD/nvim-neoclip.lua")
 
 	-- Autocomplete
 	use("hrsh7th/nvim-cmp")
