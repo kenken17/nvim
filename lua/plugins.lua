@@ -108,6 +108,7 @@ return packer.startup(function(use)
 		end,
 		ft = { "markdown" },
 	})
+	use({ "folke/todo-comments.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 
 	-- DB
 	use("tpope/vim-dadbod")
