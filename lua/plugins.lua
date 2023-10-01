@@ -53,8 +53,12 @@ return packer.startup(function(use)
 	-- use("kenken17/simple.vim")
 
 	-- IDE
-	use("preservim/nerdtree")
-	use("PhilRunninger/nerdtree-visual-selection")
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+	})
 	use("christoomey/vim-tmux-navigator")
 	use("mhinz/vim-startify")
 	use("vim-airline/vim-airline")

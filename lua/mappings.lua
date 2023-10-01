@@ -83,9 +83,6 @@ map("v", "<Leader>y", '"+y')
 -- For making toc for markdown, need markdown-toc
 map("n", "<Leader>mt", ":!markdown-toc -i %<CR>", opts)
 
--- Open up NERDTree
-map("n", "<Leader><Space>", ":lua OpenNERDTree()<CR>", opts)
-
 -- toggle between - as word
 map("n", "<Leader>w", ":set iskeyword-=-<Cr>", opts)
 
@@ -96,7 +93,7 @@ function CloseOut()
 	local is_plugin_ui = vim.fn.winnr("$") == 1
 	local win_config = vim.api.nvim_win_get_config(0)
 	local is_floating = win_config.relative == "editor"
-	local is_special = vim.bo.filetype == "nerdtree"
+	local is_special = vim.bo.filetype == "NvimTree"
 		or vim.bo.filetype == "help"
 		or vim.bo.filetype == "packer"
 		or vim.bo.filetype == "fugitiveblame"
@@ -120,16 +117,5 @@ function CloseOut()
 				end
 			end
 		end
-	end
-end
-
--- Open NERDTree
-function OpenNERDTree()
-	local is_startify = vim.bo.filetype == "startify"
-
-	if is_startify then
-		vim.cmd("NERDTree")
-	else
-		vim.cmd("NERDTreeFind")
 	end
 end
