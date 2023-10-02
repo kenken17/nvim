@@ -18,6 +18,10 @@ map("n", "<F1>", ":help <C-r><C-w><Cr>", s_opts)
 map("n", "<F2>", ":lua CloseOut()<Cr>", s_opts)
 map("n", "<Leader><F2>", ":tabclose<Cr>", s_opts)
 
+-- Increase / Decrease
+map("n", "+", "<C-a>", s_opts)
+map("n", "-", "<C-x>", s_opts)
+
 -- Resize with arrows
 map("n", "<S-h>", ":vertical resize -2<Cr>", s_opts)
 map("n", "<S-l>", ":vertical resize +2<Cr>", s_opts)
