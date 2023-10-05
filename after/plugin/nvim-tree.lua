@@ -19,6 +19,7 @@ local function my_on_attach(bufnr)
 	vim.keymap.set("n", "<C-x>", api.node.open.horizontal, opts("Open: Horizontal Split"))
 	vim.keymap.set("n", "gy", api.fs.copy.relative_path, opts("Copy Relative Path"))
 	vim.keymap.set("n", "Y", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
+	vim.keymap.set("n", "s", api.node.open.vertical, opts("Open: vertical Split"))
 end
 
 -- pass to setup along with your other options
